@@ -1,39 +1,41 @@
 <template>
   <div>
-    <q-scroll-area ref="scrollArea" :style="hoogteStijl">
-      <Pagina_stroken4 class="bladspiegel" @wisselWerkblad="wisselWerkblad">
-        <div v-slot="titel">Tafels</div>
-        <mainTafels v-slot="strook1" strookId="1"></mainTafels>
-        <mainTafels #strook2 strookId="2"></mainTafels>
-        <mainTafels #strook3 strookId="3"></mainTafels>
-        <mainTafels #strook4 strookId="4"></mainTafels>
-        <div slot="instellingen"><instellingen /></div>
+    <div ref="scrollArea" :style="hoogteStijl">
+      <Pagina_stroken4 class="bladspiegel">
+        <template #titel>appelmoes</template>
+        <!-- <template #strook1><mainTafels strookId="1"></mainTafels></template>
+        <template #strook2><mainTafels strookId="2"></mainTafels></template>
+        <template #strook3><mainTafels strookId="3"></mainTafels></template>
+        <template #strook4><mainTafels strookId="4"></mainTafels></template> -->
+        <template #instellingen><instellingenTafels /></template>
       </Pagina_stroken4>
-    </q-scroll-area>
-    <q-btn @click="Scrollen" fab class="scrollknop fixed-bottom"
+    </div>
+    <!-- <q-btn @click="Scrollen" fab class="scrollknop fixed-bottom"
       ><q-icon v-if="scrolled2top" name="keyboard_arrow_down" /><q-icon
         v-else
         name="keyboard_arrow_up"
-    /></q-btn>
+    /></q-btn> -->
   </div>
 </template>
 
-<script>
-import paginaMix from 'src/mixins/paginaMix';
-import mainTafels from './stroken/tafels/mainTafels.vue';
-// import MainTafels from "src/BU/werkbladfabriek/stroken/tafels/mainTafels.vue";
-import Pagina_stroken4 from '../vasteLayout/Pagina_stroken4.vue';
-import instellingen from './stroken/tafels/instellingen.vue';
+<script setup>
+// import paginaMix from 'src/mixins/paginaMix';
+// import mainTafels from './stroken/tafels/mainTafels.vue';
 
-export default {
-  emits: ['wisselWerkblad'],
-  components: {
-    instellingen,
-    mainTafels,
-    Pagina_stroken4,
-  },
-  mixins: [paginaMix],
-};
+import Pagina_stroken4 from '../vasteLayout/Pagina_stroken4.vue';
+import instellingenTafels from './stroken/tafels/instellingenTafels.vue';
+
+const hoogteStijl = '890px';
+
+// export default {
+//   emits: ['wisselWerkblad'],
+//   components: {
+//     instellingenTafels,
+//     // mainTafels,
+//     Pagina_stroken4,
+//   },
+//   // mixins: [paginaMix],
+// };
 </script>
 
 <style scoped>

@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div w-200 h-20 bg-pink></div>
-    <div w-200 h-20 bg-yellow></div>
-    <div w-200 h-20 bg-green></div>
+    <div w-200 h-20 bg-pink>
+      <slot name="header"></slot>
+    </div>
+    <div w-200 h-20 bg-yellow>
+      <slot name="content"></slot>
+    </div>
+    <div w-200 h-20 bg-green>
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script></script>
 
 <style lang="scss" scoped></style>

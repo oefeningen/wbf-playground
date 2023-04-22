@@ -60,18 +60,16 @@
         flat
         size="sm"
         round
-        :color="besturingStore.toonTitel('strook' + strookId) ? 'green' : 'red'"
+        :color="besturingStore.toonTitel['strook' + strookId] ? 'green' : 'red'"
         icon="text_fields"
         class="zijknop vijfde"
         @click="
-          setToonTitel({
-            strookId: strookId,
-            status: !besturingStore.toonTitel('strook' + strookId),
-          })
+          besturingStore.toonTitel['strook' + strookId] =
+            !besturingStore.toonTitel['strook' + strookId]
         "
       >
         <q-tooltip>
-          <div v-if="besturingStore.toonTitel('strook' + strookId)">
+          <div v-if="besturingStore.toonTitel['strook' + strookId]">
             Verberg de titel
           </div>
           <div v-else>Toon de titel</div>
@@ -103,23 +101,36 @@
     </div>
   </div>
 </template>
-<script>
-import { mapStores } from 'pinia';
+<script setup>
+// import { mapStores } from 'pinia';
+// import { ref } from 'vue';
 import { useBesturingStore } from 'src/stores/besturing-store.js';
-export default {
-  data() {
-    return {
-      mobileData: false,
-      bluetooth: false,
-    };
-  },
-  methods: {},
-  computed: {
-    ...mapStores(useBesturingStore),
-  },
 
-  props: ['oefenvormen', 'strookId'],
-};
+const props = defineProps({
+  strookId: {
+    type: String,
+  },
+  oefenvormen: {
+    type: Array,
+  },
+});
+
+const besturingStore = useBesturingStore();
+
+// export default {
+//   data() {
+//     return {
+//       mobileData: false,
+//       bluetooth: false,
+//     };
+//   },
+//   methods: {},
+//   computed: {
+//     ...mapStores(useBesturingStore),
+//   },
+
+//   props: ['oefenvormen', 'strookId'],
+// };
 </script>
 
 <style scoped>

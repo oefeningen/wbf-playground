@@ -41,207 +41,31 @@
           <q-separator />
           <q-card-actions>
             <q-space></q-space>
-            <knoppenrij />
+            <besturing-knoppen />
           </q-card-actions>
-          <!-- <q-btn v-if="vanuitWerkbladbeheer"
-                    color="primary"
-                    icon="send"
-                    label="Exporteer naar digiwerkblad"
-                    @click="exporteer" /> -->
         </q-card>
       </q-card>
     </div>
   </q-page>
 </template>
 
-<script>
-import { uid } from 'quasar';
+<script setup>
+// import { uid } from 'quasar';
 // import * as htmlToImage from "html-to-image"
+import PaginaHoofding from './PaginaHoofding.vue';
+import PaginaFooter from './PaginaFooter.vue';
+import LeegKader from './leegKader4.vue';
+// import knoppenRij from './knoppenrij.vue';
+import besturingKnoppen from './besturingKnoppen.vue';
+import { useBesturingStore } from 'src/stores/besturing-store';
 
-export default {
-  components: {
-    paginaHoofding: require('components/vasteLayout/PaginaHoofding').default,
-    paginaFooter: require('components/vasteLayout/PaginaFooter').default,
-    leegKader: require('components/vasteLayout/leegKader4').default,
-    knoppenrij: require('components/vasteLayout/knoppenrij').default,
-  },
-  props: ['map'],
-  computed: {
-    // ...mapState("mappen", ["selectedMapId"]),
-    // ...mapState("werkbladen",["vanuitWerkbladbeheer"])
-  },
-  methods: {
-    // maakZip(){
+// const props = defineProps({
+//   map: Object,
+// });
+const besturingStore = useBesturingStore();
 
-    // },
-
-    // ...mapActions("besturing", ["toonOplossing", "toggleOplossing"]),
-    // ...mapActions("mappen", ["FBWerkbladGegenereerd"]),
-
-    // exporteer() {
-    //     var verberglijst = document.getElementsByClassName('print-hide');
-    //     for (var i = 0; i < verberglijst.length; i++) {
-    //         var el = verberglijst[i]
-    //         // el.style.visibility = "hidden";
-    //         el.style.display = "none";
-    //     }
-    //     var kaderlijst = document.getElementsByClassName("leegKader")
-    //     for (var i = 0; i < kaderlijst.length; i++) {
-    //         var el = kaderlijst[i]
-    //         el.style.border = "1px solid white";
-    //     }
-    //     this.toonOplossing()
-    //     var mc = this
-    //     setTimeout(function () {
-    //         mc.maakZip()
-    //     }, 1000)
-
-    // },
-    filterNonPrinting(node) {
-      return node.className != 'print-hide';
-    },
-    // maakZip() {
-    //     // this.toonOplossing()
-    //     console.log("verzamel gegevens")
-    //     var werkblad = {
-    //         map: this.selectedMapId,
-
-    //         actief: false,
-    //         id: uid(),
-    //         invulvelden: []
-    //     }
-    //     var el = document.getElementsByClassName('oplossing');
-    //     var blad = document.getElementsByClassName('drillblad')[0]
-    //     for (var i = 0; i < el.length; i++) {
-    //         var positie = this.getPosition(el[i])
-    //         var bladpositie = this.getPosition(blad)
-    //         console.log(el[i].innerHTML, this.getPosition(el[i]))
-    //         console.log(el[i].getBoundingClientRect().width)
-    //         var opgave = {
-    //             id: uid(),
-    //             x: positie.x,
-    //             y: positie.y - bladpositie.y - 15 - 100,
-    //             controleer: true,
-    //             antwoord: el[i].innerHTML,
-    //             breedte: (el[i].getBoundingClientRect().width * 2) + 45
-    //         }
-    //         werkblad.invulvelden.push(opgave)
-    //     }
-    //     console.log("werkblad", werkblad)
-
-    //     // zip.file("invulvelden.json", JSON.stringify(werkblad.invulvelden))
-
-    //     this.toggleOplossing()
-    //     this.$q.dialog({
-    //         title: 'Vraagje',
-    //         message: 'Welke naam wil je dit werkblad geven?',
-    //         prompt: {
-    //             model: '',
-    //             type: 'text' // optional
-    //         },
-    //         cancel: true,
-    //         persistent: true
-    //     }).onOk(data => {
-    //         // var zip = new JSZip()
-    //         werkblad.naam = data
-
-    //         var node = document.getElementsByClassName('blad');
-    //         var image = null
-    //         htmlToImage.toPng(node[0], {
-    //                 filter: this.filterNonPrinting
-    //             })
-    //             .then((dataUrl) => {
-    //                 var img = new Image();
-    //                 img.src = dataUrl;
-    //                 image = dataUrl
-    //                 // preview toevoegen na werkblad
-    //                 // document.body.appendChild(img);
-
-    //                 console.log("dataUrl", dataUrl.substr(dataUrl.indexOf(',')))
-    //                 var payload = {
-    //                     map: werkblad.map,
-    //                     name: werkblad.naam,
-    //                     invulvelden: werkblad.invulvelden,
-    //                     id: werkblad.id,
-    //                     image: dataUrl,
-    //                     actief: false
-    //                 }
-    //                 console.log("gegenereerd", payload)
-    //                 this.FBWerkbladGegenereerd(payload)
-
-    //                 // zip.file("werkblad.png", dataUrl.substr(dataUrl.indexOf(',')), {
-    //                 // base64: true
-    //                 var verberglijst = document.getElementsByClassName('print-hide');
-
-    //                 for (var i = 0; i < verberglijst.length; i++) {
-    //                     var el = verberglijst[i]
-    //                     el.style.visibility = "visible";
-    //                     el.style.display = "block";
-    //                 }
-
-    //             })
-    //             .catch(function (error) {
-    //                 console.error('oops, Er ging iets mis!', error);
-    //             })
-    //     }).onCancel(() => {
-    //         var verberglijst = document.getElementsByClassName('print-hide');
-    //         for (var i = 0; i < verberglijst.length; i++) {
-    //             var el = verberglijst[i]
-    //             el.style.visibility = "visible";
-    //         }
-    //         var kaderlijst = document.getElementsByClassName("leegKader")
-    //                 for (var i = 0; i < kaderlijst.length; i++) {
-    //                     var el = kaderlijst[i]
-    //                     // el.style.border = "1px dashed lightblue";
-    //                 }
-    //         // console.log('>>>> Cancel')
-    //     }).onDismiss(() => {
-    //         var verberglijst = document.getElementsByClassName('print-hide');
-    //         for (var i = 0; i < verberglijst.length; i++) {
-    //             var el = verberglijst[i]
-    //             el.style.visibility = "visible";
-    //         }
-    //         var kaderlijst = document.getElementsByClassName("leegKader")
-    //                 for (var i = 0; i < kaderlijst.length; i++) {
-    //                     var el = kaderlijst[i]
-    //                     // el.style.border = "1px dashed lightblue";
-    //                 }
-    //         // console.log('I am triggered on both OK and Cancel')
-    //     })
-    // }
-
-    // ,
-    // verzamelGegevens() {
-
-    // },
-    // getPosition(el) {
-    //     var xPos = 0;
-    //     var yPos = 0;
-    //     var afwijkingY = 4
-
-    //     while (el) {
-    //         if (el.tagName == "BODY") {
-    //             // deal with browser quirks with body/window/document and page scroll
-    //             var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-    //             var yScroll = el.scrollTop || document.documentElement.scrollTop;
-
-    //             xPos += (el.offsetLeft - xScroll + el.clientLeft);
-    //             yPos += (el.offsetTop - yScroll + el.clientTop) + afwijkingY;
-    //         } else {
-    //             // for all other non-BODY elements
-    //             // console.log("geen body",el.offsetLeft)
-    //             xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-    //             yPos += (el.offsetTop - el.scrollTop + el.clientTop) + afwijkingY;
-    //         }
-
-    //         el = el.offsetParent;
-    //     }
-    //     return {
-    //         x: xPos,
-    //         y: yPos
-    //     };
-    // }
-  },
+const filterNonPrinting = () => {
+  return (node) => node.className != 'print-hide';
 };
 </script>
 <style scoped>

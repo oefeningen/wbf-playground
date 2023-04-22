@@ -23,7 +23,7 @@ export default {
       this.scrolled2top = !this.scrolled2top;
     },
     wisselWerkblad(werkblad) {
-      console.log("werkblad", werkblad)
+      console.log("werkblad", werkblad)src/BU/mixins/paginaMix.js
     }
   },
   computed: {
