@@ -2,11 +2,11 @@
   <div>
     <div ref="scrollArea" :style="hoogteStijl">
       <Pagina_stroken4 class="bladspiegel">
-        <template #titel>appelmoes</template>
-        <!-- <template #strook1><mainTafels strookId="1"></mainTafels></template>
+        <template #titel>Tafels</template>
+        <template #strook1><mainTafels strookId="1"></mainTafels></template>
         <template #strook2><mainTafels strookId="2"></mainTafels></template>
         <template #strook3><mainTafels strookId="3"></mainTafels></template>
-        <template #strook4><mainTafels strookId="4"></mainTafels></template> -->
+        <template #strook4><mainTafels strookId="4"></mainTafels></template>
         <template #instellingen><instellingenTafels /></template>
       </Pagina_stroken4>
     </div>
@@ -20,7 +20,7 @@
 
 <script setup>
 // import paginaMix from 'src/mixins/paginaMix';
-// import mainTafels from './stroken/tafels/mainTafels.vue';
+import mainTafels from './stroken/tafels/mainTafels.vue';
 
 import Pagina_stroken4 from '../vasteLayout/Pagina_stroken4.vue';
 import instellingenTafels from './stroken/tafels/instellingenTafels.vue';

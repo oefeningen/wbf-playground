@@ -1,21 +1,21 @@
 <template>
   <div>
     <div class="text-caption">Welke tafels?</div>
-    {{ geselecteerdeTafels }}
+    <!-- {{ geselecteerdeTafels }} -->
     <multiSelect
       :options="optionsTafels"
       v-model:selectie="geselecteerdeTafels"
       split="10"
     />
     <div class="text-caption">Welke bewerkingen?</div>
-    {{ geselecteerdeBewerkingen }}
+    <!-- {{ geselecteerdeBewerkingen }} -->
     <multiSelect
       :options="optionsBewerkingen"
       v-model:selectie="geselecteerdeBewerkingen"
       :spread="false"
     />
     Welke oefeningen:
-    {{ geselecteerdeOefeningen }}
+    <!-- {{ geselecteerdeOefeningen }} -->
     <oefeningSelectie
       v-model:geselecteerdeOefeningen="geselecteerdeOefeningen"
       :oefentypes="oefenvormen"
@@ -36,12 +36,12 @@ const optionsBewerkingen = ref(['x', ':']);
 const geselecteerdeOefeningen = ref([]);
 const oefentypes = ref(oefenvormen);
 
-// const saveSettings = () => {
-//   var settings = {
-//     geselecteerdeTafels: geselecteerdeTafels.value,
-//     geselecteerdeBewerkingen: geselecteerdeBewerkingen.value,
-//   };
-// };
+const saveSettings = () => {
+  var settings = {
+    geselecteerdeTafels: geselecteerdeTafels.value,
+    geselecteerdeBewerkingen: geselecteerdeBewerkingen.value,
+  };
+};
 
 // import instellingMix from 'src/mixins/instellingMix.js';
 
