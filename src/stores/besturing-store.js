@@ -37,6 +37,9 @@ export const useBesturingStore = defineStore('besturing', {
       for (var i = strookIndex + 1; i <= 4; i++) {
         this.geselecteerdeOefeningen['strook' + i] =
           this.geselecteerdeOefeningen['strook' + strookId];
+        this.opties['strook' + i] = JSON.parse(
+          JSON.stringify(this.opties['strook' + strookId])
+        );
       }
     },
     getToonTitelByStrookId(strookId) {

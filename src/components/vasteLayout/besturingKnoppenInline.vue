@@ -103,10 +103,10 @@ const ResetEnRekenAllesUit = () => {
 
 const saveSettings = () => {
   var opties = JSON.parse(JSON.stringify(props.opties));
-  besturingStore.opties.strook1 = opties;
-  besturingStore.opties.strook2 = opties;
-  besturingStore.opties.strook3 = opties;
-  besturingStore.opties.strook4 = opties;
+  besturingStore.opties.strook1 = JSON.parse(JSON.stringify(props.opties));
+  besturingStore.opties.strook2 = JSON.parse(JSON.stringify(props.opties));
+  besturingStore.opties.strook3 = JSON.parse(JSON.stringify(props.opties));
+  besturingStore.opties.strook4 = JSON.parse(JSON.stringify(props.opties));
 };
 
 const shuffleOefeningen = () => {
@@ -123,7 +123,7 @@ const shuffleOefeningen = () => {
     besturingStore.geselecteerdeOefeningen.strook4 = _.sample(
       props.geselecteerdeOefeningen
     ).label;
-    saveSettings();
+    ResetEnRekenAllesUit();
   } else {
     $q.notify({
       message: 'Geen oefeningen geselecteerd',

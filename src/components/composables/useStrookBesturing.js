@@ -17,8 +17,13 @@ export default function useStrookBesturing(strookId, startActie) {
     return besturingStore.opties['strook' + strookId];
   });
 
+  const toonOplossing = computed(() => {
+    return besturingStore.toonOplossing;
+  });
   return {
     opties,
+    toonOplossing,
+
     generatieId,
   };
 }

@@ -64,16 +64,13 @@
         :color="besturingStore.toonTitel['strook' + strookId] ? 'green' : 'red'"
         icon="text_fields"
         class="zijknop vijfde"
-        @click="
-          besturingStore.toonTitel['strook' + strookId] =
-            !besturingStore.toonTitel['strook' + strookId]
-        "
+        @click="toggleTitel"
       >
         <q-tooltip>
-          <div v-if="besturingStore.toonTitel['strook' + strookId]">
-            Verberg de titel
+          <div v-if="besturingStore.opties['strook' + strookId].hideTitel">
+            Toon de titel
           </div>
-          <div v-else>Toon de titel</div>
+          <div v-else>Verberg de titel</div>
         </q-tooltip>
       </q-btn>
 
@@ -84,7 +81,7 @@
         color="green"
         icon="refresh"
         class="zijknop derde"
-        @click="besturingStore.uitrekenstatus['strook' + strookId] = true"
+        @click="opnieuwRekenen"
       >
         <q-tooltip> Deze oefening opnieuw berekenen </q-tooltip>
       </q-btn>
@@ -104,6 +101,7 @@
 </template>
 <script setup>
 import { useBesturingStore } from 'src/stores/besturing-store.js';
+import { uid } from 'quasar';
 
 const props = defineProps({
   strookId: {
@@ -115,6 +113,13 @@ const props = defineProps({
 });
 
 const besturingStore = useBesturingStore();
+const opnieuwRekenen = () => {
+  besturingStore.generatieIds['strook' + props.strookId] = uid();
+};
+const toggleTitel = () => {
+  besturingStore.opties['strook' + props.strookId].hideTitel =
+    !besturingStore.opties['strook' + props.strookId].hideTitel;
+};
 </script>
 
 <style scoped>
