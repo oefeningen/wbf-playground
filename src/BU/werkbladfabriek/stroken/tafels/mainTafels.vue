@@ -1,10 +1,10 @@
 <template>
   <div>
+    {{ geselecteerdeOefening }}
     <!-- <component :is="geselecteerdeOefening" :strookId="strookId" :oefenvormen="oefenvormen"></component> -->
-    <component :is="geselecteerdeOefening" :strookId="strookId" ></component>
+    <component :is="geselecteerdeOefening" :strookId="strookId"></component>
   </div>
 </template>
-    
 
 <script>
 /*
@@ -15,8 +15,8 @@ Het bestand lijst.js moet aangepast worden en zorgt voor de rest
 
 */
 
-import oefenvormLijst from "./lijst.js";
-import { mapGetters } from "vuex";
+import oefenvormLijst from './lijst.js';
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -24,19 +24,19 @@ export default {
   },
   methods: {},
   computed: {
-    ...mapGetters("besturing", ["getGeselecteerdeOefening"]),
+    ...mapGetters('besturing', ['getGeselecteerdeOefening']),
     geselecteerdeOefening() {
       var oefenlabel = this.getGeselecteerdeOefening(this.strookId);
-      console.log("geselecteerdeOefening", oefenlabel);
+      console.log('geselecteerdeOefening', oefenlabel);
       for (var i = 0; i < oefenvormLijst.length; i++) {
         if (oefenvormLijst[i].label == oefenlabel) {
           return oefenvormLijst[i].component;
         }
       }
-      console.log("niets gevonden");
+      console.log('niets gevonden');
       return oefenvormLijst[0].component;
-    }
+    },
   },
-  props: ["strookId"]
+  props: ['strookId'],
 };
 </script>

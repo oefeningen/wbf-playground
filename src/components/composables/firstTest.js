@@ -1,9 +1,15 @@
 import { onMounted, ref, watch } from 'vue';
 import _ from 'lodash';
+import { uid } from 'quasar';
 
-export default function useFirstTest() {
+export default function useFirstTest(actie) {
   const testwaarde1 = ref(0);
   const testwaarde2 = ref(0);
+
+  function starten() {
+    console.log('FirstTest', uid());
+    actie();
+  }
 
   function optellen() {
     return (testwaarde1.value = testwaarde1.value + testwaarde2.value);
@@ -18,5 +24,6 @@ export default function useFirstTest() {
     optellen,
     testwaarde1,
     testwaarde2,
+    starten,
   };
 }

@@ -3,11 +3,11 @@
     <slot name="oefening"></slot>
     <div class="zijbalk-met-knoppen print-hide">
       <q-btn
-        size="md"
+        size="sm"
         flat
         round
         color="secondary"
-        icon="settings_applications"
+        icon="settings"
         class="zijknop"
       >
         <q-tooltip> Instellingen voor deze oefening </q-tooltip>
@@ -31,13 +31,14 @@
           transition-show="scale"
           transition-hide="scale"
         >
-          <div class="text-caption q-ma-md">
+          <div class="text-caption q-mx-md q-mt-sm">
             Kies een andere oefenvorm
             <hr />
           </div>
-          <div class="row no-wrap q-pa-md">
+          <div class="row no-wrap q-px-md q-mb-md">
             <q-list style="min-width: 100px">
               <q-item
+                dense
                 clickable
                 v-close-popup
                 v-for="(oefenvorm, key) in oefenvormen"
@@ -94,7 +95,7 @@
         color="red"
         icon="arrow_downward"
         class="zijknop vierde"
-        @click="doorvoeren(strookId)"
+        @click="besturingStore.oefeningDoorvoeren(strookId)"
       >
         <q-tooltip> Voer deze oefening door tot beneden </q-tooltip>
       </q-btn>
@@ -102,8 +103,6 @@
   </div>
 </template>
 <script setup>
-// import { mapStores } from 'pinia';
-// import { ref } from 'vue';
 import { useBesturingStore } from 'src/stores/besturing-store.js';
 
 const props = defineProps({
@@ -116,21 +115,6 @@ const props = defineProps({
 });
 
 const besturingStore = useBesturingStore();
-
-// export default {
-//   data() {
-//     return {
-//       mobileData: false,
-//       bluetooth: false,
-//     };
-//   },
-//   methods: {},
-//   computed: {
-//     ...mapStores(useBesturingStore),
-//   },
-
-//   props: ['oefenvormen', 'strookId'],
-// };
 </script>
 
 <style scoped>
@@ -152,7 +136,7 @@ const besturingStore = useBesturingStore();
 .zijknop {
   position: absolute;
   top: 0cm;
-  left: -0.2cm;
+  left: 0cm;
 }
 .tweede {
   position: absolute;

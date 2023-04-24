@@ -57,7 +57,7 @@
 </template>
 
 <script>
-//import {ezPrintJS} from "libs/ezprintjs.min.js";
+import { ezPrintJS } from 'libs/ezprintjs.min.js';
 // import { mapActions, mapState } from 'vuex';
 import { mapStores } from 'pinia';
 import { useBesturingStore } from 'src/stores/besturing-store';

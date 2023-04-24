@@ -31,7 +31,7 @@
 
     <div class="zijbalk">
       <q-card>
-        <q-card class="my-card bg-secondary instellingveld">
+        <q-card class="my-card bg-blue-2 instellingveld">
           <q-card-section class="q-pa-sm">
             <div class="text-h6">Instellingen</div>
           </q-card-section>
@@ -41,7 +41,7 @@
           <q-separator />
           <q-card-actions>
             <q-space></q-space>
-            <besturing-knoppen />
+            <!-- <besturing-knoppen /> -->
           </q-card-actions>
         </q-card>
       </q-card>

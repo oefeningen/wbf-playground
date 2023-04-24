@@ -6,14 +6,14 @@
           flat
           dense
           round
-          icon="menu"
+          icon="home"
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>Quasar CLI with Vite App</q-toolbar-title>
+        <q-toolbar-title>Werkbladfabriek</q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Versie v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
