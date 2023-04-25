@@ -34,12 +34,10 @@
           />
         </div>
 
-        <uitrekenKnop>Reken uit</uitrekenKnop>
+        <uitrekenKnop @click="uitrekenen">Reken uit</uitrekenKnop>
       </template>
       <template #oefening>
-        <oefening-titel :strookId="props.strookId"
-          >De titel van je oefening</oefening-titel
-        >
+        <oefening-titel :strookId="props.strookId">Los op!</oefening-titel>
 
         <div class="fit row justify-between">
           <div
@@ -126,6 +124,7 @@ const { opties, toonOplossing, generatieId } = useStrookBesturing(
   props.strookId,
   uitrekenen
 );
+onMounted(uitrekenen);
 </script>
 
 <style lang="scss" scoped></style>

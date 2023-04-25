@@ -1,20 +1,21 @@
-import { defineAsyncComponent } from 'vue';
+import {
+  defineAsyncComponent
+} from 'vue';
 
-export default [
-  {
+export default [{
     component: defineAsyncComponent(() =>
-      import('components/werkbladFabriek/stroken/tafels/laadTest.vue')
+      import('src/components/werkbladFabriek/stroken/tafels/losseOefeningen.vue')
     ),
     id: 'oefenvorm10',
-    label: 'test',
+    label: 'Losse oefeningen',
     value: 'oefenvorm10',
   },
   {
     component: defineAsyncComponent(() =>
-      import('components/werkbladFabriek/stroken/tafels/laadTest2.vue')
+      import('src/components/werkbladFabriek/stroken/tafels/tafelRooster.vue')
     ),
     id: 'oefenvorm10',
-    label: 'test2',
+    label: 'Tafelrooster',
     value: 'oefenvorm10',
   },
   // {

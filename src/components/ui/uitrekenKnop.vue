@@ -4,8 +4,20 @@
   </q-btn>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { useBesturingStore } from 'src/stores/besturing-store';
+import { uid } from 'quasar';
+
+const besturingStore = useBesturingStore();
+
+const props = defineProps({
+  strookId: {
+    type: String,
+  },
+});
+const rekenUit = () => {
+  besturingStore.generatieIds['strook' + strookId] = uid();
+};
 </script>
 
 <style></style>

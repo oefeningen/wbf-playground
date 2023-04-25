@@ -7,22 +7,40 @@
       </template>
       <template #oefening>
         <oefening-titel :strookId="props.strookId"
-          >De titel van je oefening</oefening-titel
+          >Tafelroosters</oefening-titel
         >
 
-        hier zie je de oefening {{ generatieId }}
+        <div class="fit row justify-around">
+          <tafel-raster
+            :generatieId="SubGeneratieId"
+            :geselecteerdeTafels="opties.geselecteerdeTafels"
+            :toonOplossing="toonOplossing"
+          ></tafel-raster>
+          <tafel-raster
+            :generatieId="SubGeneratieId"
+            :geselecteerdeTafels="opties.geselecteerdeTafels"
+            :toonOplossing="toonOplossing"
+          ></tafel-raster>
+          <tafel-raster
+            :generatieId="SubGeneratieId"
+            :geselecteerdeTafels="opties.geselecteerdeTafels"
+            :toonOplossing="toonOplossing"
+          ></tafel-raster>
+        </div>
       </template>
     </leegKader4>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { uid } from 'quasar';
+import { ref, onMounted } from 'vue';
 import leegKader4 from 'src/components/vasteLayout/leegKader4.vue';
 import useStrookBesturing from 'src/components/composables/useStrookBesturing';
 import multiSelect from 'src/components/ui/multiSelect.vue';
 import oefeningTitel from 'src/components/vasteLayout/oefeningTitel.vue';
 import uitrekenKnop from 'src/components/ui/uitrekenKnop.vue';
+import tafelRaster from 'src/components/werkbladfabriek/stroken/tafels/parts/tafelRaster.vue';
 
 const props = defineProps({
   strookId: {
@@ -32,9 +50,11 @@ const props = defineProps({
     type: Array,
   },
 });
+const SubGeneratieId = ref('');
 
 const uitrekenen = () => {
   console.log('uitrekenen');
+  SubGeneratieId.value = uid();
 };
 
 //Dit hier na uitrekenfunctie zetten

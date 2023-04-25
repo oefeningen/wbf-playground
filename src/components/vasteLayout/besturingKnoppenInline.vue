@@ -62,6 +62,7 @@ import { useQuasar, uid } from 'quasar';
 // import { mapActions, mapState } from 'vuex';
 // import { mapStores } from 'pinia';
 import { useBesturingStore } from 'src/stores/besturing-store';
+import { nextTick } from 'vue';
 const $q = useQuasar();
 
 const besturingStore = useBesturingStore();
@@ -96,9 +97,9 @@ const RekenAllesUit = () => {
   besturingStore.generatieIds.strook3 = uid();
   besturingStore.generatieIds.strook4 = uid();
 };
-const ResetEnRekenAllesUit = () => {
+const ResetEnRekenAllesUit = async () => {
   saveSettings();
-  RekenAllesUit();
+  nextTick().then(RekenAllesUit());
 };
 
 const saveSettings = () => {
