@@ -43,6 +43,7 @@
 
         <div class="fit row justify-between">
           <div
+            min-w-30
             v-for="(reeks, key) in oefenreeksen"
             :key="key"
             :style="'width:' + breedte + ';'"
@@ -64,7 +65,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useQuasar } from 'quasar';
 import leegKader4 from 'src/components/vasteLayout/leegKader4.vue';
 import useStrookBesturing from 'src/components/composables/useStrookBesturing';
 import multiSelect from 'src/components/ui/multiSelect.vue';
@@ -72,7 +74,7 @@ import oefeningTitel from 'src/components/vasteLayout/oefeningTitel.vue';
 import uitrekenKnop from 'src/components/ui/uitrekenKnop.vue';
 
 import Tafeloefening from 'src/classes/Tafeloefening';
-
+const $q = useQuasar();
 const props = defineProps({
   strookId: {
     type: String,
@@ -82,27 +84,41 @@ const props = defineProps({
   },
 });
 
+const aantal = computed(() => {
+  if (opties.value.aantal) {
+    return opties.value.aantal;
+  } else {
+    return 15;
+  }
+});
+
 const optionsBewerkingen = ref(['x', ':']);
 const optionsTafels = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 const oefenreeksen = ref([]);
 
 const uitrekenen = () => {
-  console.log('uitrekenen');
+  console.log('uitrekenen', opties.value.geselecteerdeTafels);
   oefenreeksen.value = [];
-  if (opties.geselecteerdeTafels && opties.geselecteerdeTafels.length > 0) {
+  if (
+    opties.value.geselecteerdeTafels &&
+    opties.value.geselecteerdeTafels.length > 0
+  ) {
     console.log(
       'DIALOOG MOET NIET OPGEROEPEN WORDEN',
-      opties.geselecteerdeTafels.length
+      opties.value.geselecteerdeTafels.length
     );
-    var tafeloefening = new Tafeloefening(opties.geselecteerdeTafels);
-    for (var i = 0; i < this.aantal / 5; i++) {
-      var reeks = tafeloefening.getReeks(opties.geselecteerdeBewerkingen, 5);
-      this.oefenreeksen.value.push(reeks);
+    var tafeloefening = new Tafeloefening(opties.value.geselecteerdeTafels);
+    for (var i = 0; i < aantal.value / 5; i++) {
+      var reeks = tafeloefening.getReeks(
+        opties.value.geselecteerdeBewerkingen,
+        5
+      );
+      oefenreeksen.value.push(reeks);
     }
-
-    console.log('oefenreeksen', oefenreeksen);
   } else {
-    console.log('DIALOOG MOET OPGEROEPEN WORDEN', opties);
+    $q.notify({
+      message: 'Er zijn gegevens te kort!',
+    });
   }
 };
 
