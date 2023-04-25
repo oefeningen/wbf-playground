@@ -39,21 +39,19 @@
       <template #oefening>
         <oefening-titel :strookId="props.strookId">Los op!</oefening-titel>
 
-        <div class="fit row justify-between">
-          <div
-            min-w-30
-            v-for="(reeks, key) in oefenreeksen"
-            :key="key"
-            :style="'width:' + breedte + ';'"
-          >
+        <div class="fit row justify-between m-l-3">
+          <div min-w-30 v-for="(reeks, key) in oefenreeksen" :key="key">
             <p
-              class="tekstopgave"
+              text-xl
+              h-5
               v-for="(oef, key) in reeks"
               contenteditable="true"
               :key="'r1_' + key"
             >
               {{ oef[0] }}
-              <span v-if="toonOplossing" class="oplossing">{{ oef[1] }}</span>
+              <span v-if="toonOplossing" class="oplossing font-bold">{{
+                oef[1]
+              }}</span>
             </p>
           </div>
         </div>
@@ -63,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 import leegKader4 from 'src/components/vasteLayout/leegKader4.vue';
 import useStrookBesturing from 'src/components/composables/useStrookBesturing';

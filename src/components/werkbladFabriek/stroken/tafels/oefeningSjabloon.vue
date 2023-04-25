@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import leegKader4 from 'src/components/vasteLayout/leegKader4.vue';
 import useStrookBesturing from 'src/components/composables/useStrookBesturing';
 import multiSelect from 'src/components/ui/multiSelect.vue';

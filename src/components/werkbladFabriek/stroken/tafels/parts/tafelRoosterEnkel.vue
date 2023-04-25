@@ -3,7 +3,7 @@
     <table>
       <tr>
         <td class="grijs">
-          <p text-caption>
+          <p text-sm h-5>
             <q-icon name="call_made" size="xs" />
             x
           </p>

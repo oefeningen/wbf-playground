@@ -27,6 +27,8 @@ const hideTitel = computed(() => {
 <style scoped>
 p {
   font-weight: 600;
+  position: relative;
+  left: -5px;
   font-size: 1.2em;
 }
 .onzichtbaar {
