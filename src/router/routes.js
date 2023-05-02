@@ -4,6 +4,21 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
   },
+  {
+    path: '/werkbladfabriek',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: 'tafelsVariabel',
+        component: () =>
+          import('pages/werkbladfabriek/werkbladTafelsVariabel.vue'),
+      },
+      {
+        path: 'playground',
+        component: () => import('pages/werkbladfabriek/werkbladPlayground.vue'),
+      },
+    ],
+  },
 
   // Always leave this as last one,
   // but you can also remove it
