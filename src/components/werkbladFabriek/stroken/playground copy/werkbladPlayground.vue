@@ -7,16 +7,16 @@
         <template #strook2><mainStarter strookId="2"></mainStarter></template>
         <template #strook3><mainStarter strookId="3"></mainStarter></template>
         <template #strook4><mainStarter strookId="4"></mainStarter></template>
-        <template #instellingen><instellingenTafels /></template>
+        <template #instellingen><instellingenWerkblad /></template>
       </Pagina_stroken4>
     </div>
   </div>
 </template>
 
 <script setup>
-import mainStarter from './stroken/playground/mainStarter.vue';
-import Pagina_stroken4 from '../vasteLayout/Pagina_stroken4.vue';
-import instellingenTafels from './stroken/tafels/instellingenTafels.vue';
+import mainStarter from './mainStarter.vue';
+import Pagina_stroken4 from 'src/components/vasteLayout/Pagina_stroken4.vue';
+import instellingenWerkblad from './instellingenWerkblad.vue';
 </script>
 
 <style scoped></style>

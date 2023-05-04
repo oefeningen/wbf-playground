@@ -70,60 +70,52 @@
           </svg>
         </q-avatar>
         <span class="boventest">{{ item.voorbeeld }}</span>
+
         <div class="ondertest">{{ item.titel }}</div>
       </div>
     </q-chip>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      //value:1,
-      aantal: 1,
-      kleur: 'primary',
-    };
-  },
-  props: ['item', 'value'],
-  mounted() {
-    this.aantal = this.value;
-  },
-  methods: {
-    remove() {
-      console.log('removed');
-      this.kleur = 'grey';
-      this.aantal = 0;
-      //
-      this.$emit('input', 0);
-      // this.$emit('aanpassen', 0);
-    },
-    veranderFrequentie(waarde) {
-      console.log('veranderFrequentie');
-      this.kleur = 'green';
-      if (this.aantal < 3) {
-        this.aantal++;
-      } else {
-        this.aantal = 1;
-      }
+<script setup>
+import { ref, defineEmits, onMounted, watch, computed } from 'vue';
 
-      this.$emit('input', this.aantal);
-    },
-    activeer() {
-      this.aantal = 2;
-      this.$emit('input', this.aantal);
-    },
+const props = defineProps({
+  item: {
+    type: Object,
+    required: true,
   },
-  watch: {
-    value(val) {
-      if (val == 0) {
-        this.kleur = 'grey';
-      } else {
-        this.kleur = 'primary';
-      }
-      this.aantal = val;
-    },
+  modelValue: {
+    type: Number,
   },
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const aantal = ref(props.modelValue);
+
+watch(aantal, (newValue) => {
+  emit('update:modelValue', aantal);
+});
+
+const kleur = ref('primary');
+
+const remove = () => {
+  kleur.value = 'grey';
+  aantal.value = 0;
+};
+const veranderFrequentie = () => {
+  kleur.value = 'primary';
+  if (aantal.value < 3) {
+    aantal.value++;
+  } else {
+    aantal.value = 1;
+  }
+};
+
+const activeer = () => {
+  kleur.value = 'primary';
+  emit('update', aantal.value);
 };
 </script>
 <style scoped>
@@ -132,7 +124,7 @@ export default {
   top: 5px;
 }
 .selchip {
-  width: 90px;
+  width: 100px;
 }
 .boventest {
   position: relative;
