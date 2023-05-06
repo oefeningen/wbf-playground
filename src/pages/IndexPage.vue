@@ -13,5 +13,11 @@
       label="Playground"
       to="/werkbladfabriek/playground"
     />
+    <q-btn
+      color="white"
+      text-color="black"
+      label="TafelDrill"
+      to="/werkbladfabriek/tafelDrill"
+    />
   </q-page>
 </template>

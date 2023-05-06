@@ -4,6 +4,7 @@ export const useBesturingStore = defineStore('besturing', {
   state: () => ({
     testWaarde: 'appelmoes',
     toonOplossing: false,
+    aantal: '45',
     opties: {
       strook1: {},
       strook2: {},
@@ -24,11 +25,14 @@ export const useBesturingStore = defineStore('besturing', {
       strook4: true,
     },
     generatieIds: {
+      drill: '',
       strook1: '',
       strook2: '',
       strook3: '',
       strook4: '',
     },
+    //oefeningen voor de drill
+    oefeningen: [],
   }),
   getters: {},
   actions: {

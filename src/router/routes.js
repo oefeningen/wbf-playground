@@ -17,6 +17,10 @@ const routes = [
         path: 'playground',
         component: () => import('pages/werkbladfabriek/werkbladPlayground.vue'),
       },
+      {
+        path: 'tafelDrill',
+        component: () => import('pages/werkbladfabriek/werkbladTafelDrill.vue'),
+      },
     ],
   },
 
