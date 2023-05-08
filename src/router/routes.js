@@ -2,12 +2,16 @@ const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [{ path: '', component: () => import('pages/IndexPage2.vue') }],
   },
   {
     path: '/werkbladfabriek',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+      {
+        path: 'menu',
+        component: () => import('pages/werkbladfabriek/indexPage2.vue'),
+      },
       {
         path: 'tafelsVariabel',
         component: () =>
