@@ -1,8 +1,8 @@
 <template>
   <drillSjabloon>
-    <template #titel>Tafels</template>
+    <template #titel>Rekenen tot 100</template>
     <template #instellingen>
-      <div class="text-caption">Welke tafels?</div>
+      <div class="text-caption">Welke oefeningen?</div>
       <selectieChip
         v-for="oefentype in oefentypes"
         :key="oefentype.titel"
@@ -38,11 +38,18 @@ import selectieChip from 'src/components/ui/selectieChip.vue';
 
 const oefentypes = ref([
   {
-    titel: 'tot 10',
+    titel: 'tientallen',
     frequentie: 2,
-    voorbeeld: '5+4',
-    plus: 'plusTot10',
-    min: 'minTot10',
+    voorbeeld: '50+10, 50-10',
+    plus: 'TplusT',
+    min: 'TminT',
+  },
+  {
+    titel: 'samenstellen',
+    frequentie: 2,
+    voorbeeld: '50+3, 3+50',
+    plus: 'TplusE',
+    min: 'TminT',
   },
   {
     titel: 'samenstellen',
