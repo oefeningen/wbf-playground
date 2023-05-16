@@ -35,4 +35,12 @@ export default [
     label: 'Drill tot 100',
     value: 'Tafels',
   },
+  {
+    component: defineAsyncComponent(() =>
+      import('src/components/testComponent.vue')
+    ),
+    id: 'Tafels',
+    label: 'Testen',
+    value: 'Tafels',
+  },
 ];
