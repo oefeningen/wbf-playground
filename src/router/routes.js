@@ -10,7 +10,7 @@ const routes = [
     children: [
       {
         path: 'menu',
-        component: () => import('pages/werkbladfabriek/indexPage2.vue'),
+        component: () => import('pages/indexPage2.vue'),
       },
       {
         path: 'tafelsVariabel',
