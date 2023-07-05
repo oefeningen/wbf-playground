@@ -11,4 +11,14 @@ export default [
     label: 'Losse oefeningen',
     value: 'oefenvorm10',
   },
+  {
+    component: defineAsyncComponent(() =>
+      import(
+        'src/components/werkbladFabriek/stroken/playground/getalbeeldHerkennen.vue'
+      )
+    ),
+    id: 'oefenvorm10',
+    label: 'Getalbeeld',
+    value: 'oefenvorm10',
+  },
 ];
